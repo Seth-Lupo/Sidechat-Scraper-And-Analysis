@@ -122,6 +122,49 @@ python word_frequency.py "party" --normalize --show-posts
 python word_frequency.py test -i custom_posts.txt -o test_analysis.png
 ```
 
+### sentiment_over_time.py
+
+Analyzes sentiment of messages over time using multiple techniques and creates timeline visualizations.
+
+**Usage:**
+```bash
+python sentiment_over_time.py [options]
+```
+
+**Options:**
+- `--method` - Sentiment analysis method: `textblob`, `lexicon`, `simple` (default: textblob)
+- `--granularity` - Time granularity: `day`, `week`, `month`, `year` (default: month)
+- `--input` - Input file path (default: data/sidechat_posts.txt)
+- `--compare` - Compare all three sentiment analysis methods
+
+**Sentiment Analysis Methods:**
+- `textblob` - Machine learning-based sentiment analysis using TextBlob
+- `lexicon` - Simple word-based sentiment using positive/negative word lists
+- `simple` - Basic analysis using punctuation, capitalization, and emoji cues
+
+**Examples:**
+```bash
+# Default analysis (TextBlob, monthly)
+python sentiment_over_time.py
+
+# Weekly sentiment using lexicon method
+python sentiment_over_time.py --method lexicon --granularity week
+
+# Daily sentiment using simple method
+python sentiment_over_time.py --method simple --granularity day
+
+# Compare all methods side-by-side
+python sentiment_over_time.py --compare --granularity month
+
+# Custom input file
+python sentiment_over_time.py --input my_data.txt --method textblob
+```
+
+**Output:**
+- Saves graphs to `visualizations/sentiment_over_time_METHOD_GRANULARITY.png`
+- Comparison mode saves to `visualizations/sentiment_comparison_GRANULARITY.png`
+- Displays summary statistics including sentiment distribution and extreme periods
+
 ## Features
 
 - Extract posts from your university's Sidechat
@@ -130,6 +173,7 @@ python word_frequency.py test -i custom_posts.txt -o test_analysis.png
   - Popular topics and keywords
   - User engagement metrics
   - Word frequency analysis
+  - Sentiment analysis over time with multiple methods
 
 ## Troubleshooting
 
